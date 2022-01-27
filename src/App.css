@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Average&family=Press+Start+2P&display=swap');
 
+@font-face {
+  font-family: Pokemon Hollow;
+  src: url('../fonts/pokemon-solid.ttf');
+}
+
 * {
   font-family: 'Press Start 2p', monospace;
 }
@@ -13,6 +18,13 @@
   display: grid;
   place-content: center;
   gap: 1rem;
+}
+
+.title {
+  font-family: 'Pokemon Hollow', sans-serif;
+  letter-spacing: 0.2rem;
+  color: #ffcc00;
+  text-shadow: 2px 2px #0067aa;
 }
 
 .screen {
@@ -60,6 +72,10 @@
   font-size: 0.7rem;
 }
 
+.bar .name {
+  text-align: left;
+}
+
 .bar .hp {
   background-color: #474848;
   display: grid;
@@ -69,6 +85,8 @@
   gap: 0.2rem;
 
   color: #f7b101;
+
+  margin-left: 20%;
 
   padding: 0.2rem 0.3rem;
 }
@@ -85,6 +103,14 @@
   height: 100%;
 
   transition: 0.5s;
+}
+
+.hp__bar.medium .hp__bar__fill {
+  background: yellow;
+}
+
+.hp__bar.low .hp__bar__fill {
+  background: red;
 }
 
 .top .our-pokemon,
@@ -116,10 +142,6 @@
   display: grid;
   align-content: center;
   justify-content: start;
-  text-align: left;
-  font-size: 0.8rem;
-  line-height: 1rem;
-  text-shadow: 2px 2px #00000030;
 
   background-color: white;
   border-radius: 5px;
@@ -130,7 +152,16 @@
   padding: 0.5rem;
 }
 
-.buttons {
+.message__text {
+  transform: scale(0.9, 1.4);
+  color: rgb(37, 37, 37);
+  text-shadow: 2px 2px #00000020;
+  text-align: left;
+  font-size: 0.8rem;
+  line-height: 1rem;
+}
+
+.moves {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
@@ -139,28 +170,28 @@
   gap: 0.55rem;
 }
 
-.ability {
+.move {
   text-transform: capitalize;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   background: linear-gradient(180deg, #00000000, #00000040);
   background-color: #f8a8b1;
-  box-shadow: 0 0 0 1px #5d6166, 0 0 0 2px white, 0 0 0 4px #303030;
+  box-shadow: 0 0 0 1px #5d6166, 0 0 0 2px white, 0 0 0 5px #303030;
 
   color: white;
   font-weight: bold;
   text-shadow: 1px 1px #000000aa, -1px -1px #000000aa, 1px -1px #000000aa,
     -1px 1px #000000aa;
 
-  font-size: 0.6rem;
+  font-size: 0.55rem;
   line-height: 0.8rem;
 }
 
-.ability:hover {
+.move:hover {
   background: #f8a8b1;
-  box-shadow: 0 0 0 1px #5d6166, 0 0 0 2px white, 0 0 0 4px #a77177;
+  box-shadow: 0 0 0 1px #5d6166, 0 0 0 2px white, 0 0 0 4px #da838d;
 }
 
-.ability:active {
+.move:active {
   filter: brightness(0.9);
 }

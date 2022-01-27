@@ -1,14 +1,23 @@
 import React from 'react'
 import { transformPokemonData } from '../utils/transformPokemonData'
 import { fetchPokemon, getPokeMoves } from '../utils/api'
+import { getRandomPokemon } from '../utils/getRandomPokemon'
+
+const initialStats = {
+  hp: 100,
+  energy: 100
+}
 
 const usePokemon = ({ pokemonName }) => {
   const [pokemon, setPokemon] = React.useState(null)
   const [moves, setMoves] = React.useState([])
-  const [stats, setStats] = React.useState({
-    hp: 100,
-    energy: 100
-  })
+  const [stats, setStats] = React.useState(initialStats)
+
+  function fetchNextPokemon () {
+    const randomPokemon = getRandomPokemon()
+    fetchPokemon(randomPokemon).then(pokemon => setPokemon(pokemon))
+    setStats(initialStats)
+  }
 
   React.useEffect(() => {
     fetchPokemon(pokemonName).then(pokemon => setPokemon(pokemon))
@@ -66,8 +75,13 @@ const usePokemon = ({ pokemonName }) => {
     changeEnergy(newEnergy)
   }
 
+  const isAlive = stats.hp > 0
+
+
   return {
+    fetchNextPokemon,
     pokemon,
+    isAlive,
     moves,
     transformedData,
     health: {
